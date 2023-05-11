@@ -1,0 +1,1 @@
+CREATE TABLE authentication.users(id varchar(100) PRIMARY KEY,username varchar(50) NOT NULL UNIQUE,first_name varchar(50),last_name varchar(50),email varchar(50) NOT NULL UNIQUE,password varchar(50) NOT NULL);
