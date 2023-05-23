@@ -1,3 +1,4 @@
 **/target
 .bsp/
 infrastructure/database/volume/
+.idea/
