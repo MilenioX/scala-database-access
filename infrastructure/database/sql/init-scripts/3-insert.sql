@@ -1,0 +1,5 @@
+INSERT INTO authentication.users(id,username,first_name,last_name,email,password) VALUES('6ab24d67-736f-4d7c-9e87-9e2d37c6a83b','user1','John','Doe','johndoe@example.com','rl23qBm9Uh6u4eDcNz1i');
+INSERT INTO authentication.users(id,username,first_name,last_name,email,password) VALUES('9c4be539-450f-4baf-9cfe-56d6c8ae4d67','user2','Jane','Smith','janesmith@example.com','wS78K2Wx3Md4oPrz0gHf');
+INSERT INTO authentication.users(id,username,first_name,last_name,email,password) VALUES('56e1738a-85b7-4d0e-89c3-13a9a901b827','user3','Michael','Johnson','michaeljohnson@example.com','Tr95nqRj4Hls7OpdceG9');
+INSERT INTO authentication.users(id,username,first_name,last_name,email,password) VALUES('e7e849eb-3d9f-4c4c-88c6-b2d1b4f8a587','user4','Emily','Williams','emilywilliams@example.com','jfKg7Hz1s9Yn3eW8uX7a');
+INSERT INTO authentication.users(id,username,first_name,last_name,email,password) VALUES('a459f4a7-2d84-4e1d-9897-4ef0d3c8a68d','user5','David','Brown','davidbrown@example.com','xy3g7fT1Kj6VbZq2dM8k');
