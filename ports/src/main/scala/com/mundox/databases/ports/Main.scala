@@ -1,12 +1,15 @@
 package com.mundox.databases.ports
 
 import com.mundox.databases.core.domain.entities.User
-import com.mundox.databases.core.domain.valueobjects.{Id, Email}
-import com.mundox.databases.ports.config.Environment
+import com.mundox.databases.core.domain.valueobjects.{Email, Id}
+import com.mundox.databases.ports.config.{Config, DefaultConfigurations, Environment}
+import pureconfig.ConfigSource
 
 import java.util.UUID
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.util.{Failure, Success}
+import pureconfig._
+import pureconfig.generic.auto._
 
 object Main {
 
@@ -25,7 +28,7 @@ object Main {
     }
 
     println("DELETING...")
-    val deleteRes = env.userCommand.deleteUser(Id("2ef3dae3-6e12-4b32-9739-80a29d2ed574"))
+    val deleteRes = env.userCommand.deleteUser(Id("da03790c-f484-4c2c-8deb-d77a93d6af94"))
     deleteRes.onComplete {
       case Failure(exception) =>
         println("There was an error deleting the new user", exception)
@@ -68,5 +71,13 @@ object Main {
 
 
 
-  private def createEnvironment():Environment = new Environment
+  private def createEnvironment():Environment = {
+    ConfigSource.default.load[Config].fold(error => {
+      println("There was an error loading the config properties", error)
+      new Environment(DefaultConfigurations.getDefaultConfigurations)
+    },config => {
+      println(s"Config file loaded successfully $config")
+      new Environment(config)
+    })
+  }
 }

@@ -3,12 +3,13 @@ package com.mundox.databases.ports.adapters.databases
 import com.mundox.databases.core.domain.entities.User
 import com.mundox.databases.core.domain.valueobjects.{Email, Id}
 import com.mundox.databases.core.services.UserService
+import com.mundox.databases.ports.config.JDBCConfig
 
 import java.sql.{ResultSet, SQLException}
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 
-class UserServiceImpl extends UserService with DatabaseConnection {
+class UserServiceImpl(jdbcConfig: JDBCConfig) extends UserService with DatabaseConnection {
 
   override def getUsers: Future[List[User]] = {
     println("getUsers service called successfully")
@@ -81,4 +82,14 @@ class UserServiceImpl extends UserService with DatabaseConnection {
       }
     }
 
+  override def getUrl: String =
+    s"${jdbcConfig.url}//${jdbcConfig.server}:${jdbcConfig.port}/${jdbcConfig.database}"
+  override def getDriver: String =
+    jdbcConfig.driver
+
+  override def getUsername: String =
+    jdbcConfig.username
+
+  override def getPassword: String =
+    jdbcConfig.password
 }

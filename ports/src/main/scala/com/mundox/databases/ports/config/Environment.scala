@@ -5,9 +5,9 @@ import com.mundox.databases.core.queries.UserQueries
 import com.mundox.databases.core.services.UserService
 import com.mundox.databases.ports.adapters.databases.UserServiceImpl
 
-class Environment {
+class Environment(config: Config) {
 
-  private val userService: UserService = new UserServiceImpl;
+  private val userService: UserService = new UserServiceImpl(config.jdbcConfig);
 
   val userQueries: UserQueries = new UserQueries(userService)
 

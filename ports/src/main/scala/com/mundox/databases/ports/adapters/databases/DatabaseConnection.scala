@@ -1,15 +1,18 @@
 package com.mundox.databases.ports.adapters.databases
 
+
+import com.mundox.databases.ports.config.JDBCConfig
+
 import java.sql.{Connection, DriverManager, ResultSet}
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 
 trait DatabaseConnection {
 
-  private lazy val url:String = "jdbc:postgresql://localhost:5432/postgres"
-  private lazy val driver:String = "org.postgresql.Driver"
-  private lazy val username:String = "postgres"
-  private lazy val password:String = "example"
+  private lazy val url:String = getUrl
+  private lazy val driver:String = getDriver
+  private lazy val username:String = getUsername
+  private lazy val password:String = getPassword
 
   protected def connect: Connection = {
     Class.forName(driver)
@@ -28,4 +31,9 @@ trait DatabaseConnection {
       }
     }
   }
+  
+  def getUrl: String
+  def getDriver: String
+  def getUsername: String
+  def getPassword: String
 }
