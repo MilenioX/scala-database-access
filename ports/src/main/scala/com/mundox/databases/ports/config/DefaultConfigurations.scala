@@ -5,7 +5,7 @@ object DefaultConfigurations {
   def getDefaultConfigurations: Config = {
     Config(
       JDBCConfig(
-        "jdbc:postgresql://",
+        "jdbc:postgresql:",
         "org.postgresql.Driver",
         "localhost",
         5432,
