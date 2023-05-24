@@ -12,7 +12,8 @@ lazy val ports = (project in file("ports"))
     name := "database",
     libraryDependencies ++= Seq(
       munit % Test,
-      postgreSQL
+      postgreSQL,
+      pureConfig
     )
   )
 
